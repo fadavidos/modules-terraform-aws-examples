@@ -12,8 +12,8 @@ data "terraform_remote_state" "db" {
 }
 
 data "template_file" "user_data" {
-  template = "${file("${path.module}/user-data.sh")}"
-//file("user-data.sh")
+  //template = "${file("${path.module}/user-data.sh")}"
+  template = file("user-data.sh")
   vars = {
     server_port = var.in_server_port
     db_address  = data.terraform_remote_state.db.outputs.address
